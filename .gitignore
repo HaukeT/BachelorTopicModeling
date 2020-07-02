@@ -1,6 +1,9 @@
 # Custom
-/DataScience/Code/TopicNumber/Topic_Modeling_Unigram/Models/
-/DataScience/Code/TopicNumber/Topic_Modeling_Bigram/Models/
+/Code/TopicNumber/Topic_Modeling_Unigram/Models/
+/Code/TopicNumber/Topic_Modeling_Bigram/Models/
+/Auswertungen/
+/IPMI/
+/TDMnachAPDsortiert/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
