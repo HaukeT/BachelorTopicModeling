@@ -1,3 +1,7 @@
+# Custom
+/DataScience/Code/TopicNumber/Topic_Modeling_Unigram/Models/
+/DataScience/Code/TopicNumber/Topic_Modeling_Bigram/Models/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
