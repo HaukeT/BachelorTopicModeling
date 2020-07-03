@@ -13,12 +13,25 @@ from gensim import corpora, models, matutils
 
 corpus = corpora.MmCorpus("./data/corpus.mm")
 
-with open('outfile', 'rb') as fp:
-    data = pickle.load(fp)
+# with open('outfile', 'rb') as fp:
+#     data = pickle.load(fp)
+
+from csv import reader
+
+data = []
+with open('topics_83.csv') as f:
+    csv_reader = reader(f, delimiter=';')
+    for i, line in enumerate(csv_reader, start=1):
+        data.append(list(map(str, line)))
+
 
 flat_list_data = []
 for sublist in data:
     flat_list_data.append(' '.join(sublist))
+
+
+print(flat_list_data)
+
 
 tfidf = TfidfVectorizer(
     min_df = 5,
@@ -50,7 +63,7 @@ def find_optimal_clusters(data, max_k):
 
 find_optimal_clusters(text, 20)
 
-clusters = MiniBatchKMeans(n_clusters=10, init_size=1024, batch_size=2048, random_state=20).fit_predict(text)
+clusters = MiniBatchKMeans(n_clusters=6, init_size=1024, batch_size=2048, random_state=20).fit_predict(text)
 
 
 def plot_tsne_pca(data, labels):
