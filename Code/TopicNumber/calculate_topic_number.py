@@ -2,6 +2,7 @@ from IPython import get_ipython
 from gensim import models, corpora
 import pandas
 import numpy as np
+import matplotlib.pyplot as plt
 from decimal import *
 
 Topicanzahl = 83
@@ -107,7 +108,7 @@ def calc_median_distance(mdiff):
 
 def calc_model_distance(model_1, model_2):
     mdiff, annotation = model_1.diff(model_2, distance='jaccard', num_words=50)
-    #print(mdiff)
+    print(mdiff)
     return mdiff
 
 
@@ -141,12 +142,23 @@ def plot_difference_matplotlib(mdiff, title="", annotation=None):
     """Helper function to plot difference between models.
 
     Uses matplotlib as the backend."""
-    import matplotlib.pyplot as plt
-    fig, ax = plt.subplots(figsize=(18, 14))
-    data = ax.imshow(mdiff, cmap='RdBu_r', origin='lower')
-    plt.title(title)
-    plt.colorbar(data)
+
+    font = {'family': 'sans',
+            'weight': 'normal',
+            'size': 22}
+
+    plt.rc('font', **font)
+
+    plt.figure(figsize=(18, 14))
+
+
+    #plt.subplot(1, 2, 2)
+    plt.imshow(mdiff, cmap='Greens', origin='lower')
+    plt.colorbar()
+    plt.clim(0.7, 1)
+    plt.savefig("unigram_jaccard_50_green_07")
     plt.show()
+
 
 
 try:
@@ -161,6 +173,8 @@ except Exception:
 else:
     py.init_notebook_mode()
     plot_difference = plot_difference_plotly
+
+
 
 
 def topic_distance():
